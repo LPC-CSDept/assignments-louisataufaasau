@@ -28,11 +28,7 @@ void outputBinary(student x[]) {
     ofstream output;
     output.open("students.bin");
     for (int i=0; i<10; i++) {
-        output << x[i].idNumber << " " << x[i].name << " " << x[i].score[0] << " " << x[i].score[1] << " " << x[i].totalscore << " " << x[i].average << endl;
-        
-        // To create the binary file,
-        // output.write( (char *)&s[i], sizeof(s[i] );
-        
+        output.write((char *)&x[i], sizeof(x[i]));
     }
 }
 
