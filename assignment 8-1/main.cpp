@@ -16,9 +16,13 @@ int findTarget(int nums[], int size, int target){
     return -1;
 }
 int main() {
-    int nums[10] = {5, 7, 9, 10, 23, 54, 55, 71, 71, 88};
-    int target = 9;
     const int size=10;
+    int nums[size] = {5, 7, 9, 10, 23, 54, 55, 71, 71, 88};
+    int target = 9;
+
+//     int nums[10] = {5, 7, 9, 10, 23, 54, 55, 71, 71, 88};
+//     int target = 9;
+//     const int size=10;
     
     cout << "Target was found at index: " << findTarget(nums, size, target) << endl;
     
