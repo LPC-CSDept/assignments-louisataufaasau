@@ -69,27 +69,31 @@ void bubbleSort(int array[], int N)
 
 int linearSearch(int array[], int N, int target)
 {
+    int iterations=0;
     for (int i=0; i<N; i++){
+        iterations++;
         if (array[i]==target){
-            return i;
+            return iterations;
         }
     }
-    return -1;
+    return iterations;
 }
 
 int binarySearch(int array[], int N, int target)
 {
+    int iterations=0;
     int first=0;
     int last=N-1;
     while (first<=last){
+        iterations++;
         int mid=(first+last)/2;
         if (array[mid]==target)
-            return mid;
+            return iterations;
         if (array[mid]<target)
             first=mid+1;
         if (array[mid]>target)
             last=mid-1;
     }
-    return -1;
+    return iterations;
 }
 
