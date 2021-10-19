@@ -20,6 +20,15 @@ int main() {
     ifstream infile("students.bin", ifstream::binary | ios::in);
     char word[50];
     
+    // Student *ptr = nullptr;
+	// ptr = new Student;
+
+	// while ( infile.read((char *)ptr, sizeof(*ptr)) ) {
+        // do something 
+    // }
+    
+    
+    
     infile.read(word, sizeof(student));
     cout << word << endl;
     
