@@ -7,33 +7,22 @@
 
 #include <iostream>
 #include <fstream>
-#include <vector>
 using namespace std;
 
 struct student{
-    int idNumber,score[2], totalscore;
+    int idNumber,score[3], totalscore;
     char name[10];
     double average;
 };
 
 int main() {
-    ifstream infile("students.bin", ifstream::binary | ios::in);
-    char word[50];
-    
-    // Student *ptr = nullptr;
-	// ptr = new Student;
+    student *ptr = nullptr;
+    ptr = new student;
+    ifstream ifs("students.bin", ifstream::binary | ios::in);
 
-	// while ( infile.read((char *)ptr, sizeof(*ptr)) ) {
-        // do something 
-    // }
-    
-    
-    
-    infile.read(word, sizeof(student));
-    cout << word << endl;
-    
-    infile.close();
-    
+    while(ifs.read((char *)ptr, sizeof(*ptr))) {
+        cout << ptr << endl;
+    }
     
     return 0;
 }

@@ -11,7 +11,7 @@ struct student{
 void outputBinary(student *x) {
     ofstream output;
     output.open("students.bin");
-    output.write((char *)&x, sizeof(x));
+    output.write((char *)x, sizeof(*x));
 }
 
 int main(){
