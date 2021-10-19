@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 using namespace std;
 
 struct student{
@@ -11,12 +12,17 @@ struct student{
 void outputBinary(student *x) {
     ofstream output;
     output.open("students.bin");
+	// when you open file here,
+	// always open the new file. truncated.
+	
     output.write((char *)x, sizeof(*x));
 }
 
 int main(){
     int studentID, score1, score2, score3;
     char name[10];
+	ofstream output;
+    output.open("students.bin");
     fstream file;
     file.open("students.txt");
     
@@ -30,7 +36,8 @@ int main(){
         students->average=(score1+score2+score3)/3;
         students->totalscore=score1+score2+score3;
         strcpy(students->name, name);
-        outputBinary(students);
+        // outputBinary(students);
+	    output.write((char *)students, sizeof(*students));
     }
     return 0;
 }

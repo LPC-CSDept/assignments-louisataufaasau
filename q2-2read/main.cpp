@@ -21,7 +21,11 @@ int main() {
     ifstream ifs("students.bin", ifstream::binary | ios::in);
 
     while(ifs.read((char *)ptr, sizeof(*ptr))) {
-        cout << ptr << endl;
+		// As the same pattern,
+		// Using the pointer, print something.
+		
+        cout << ptr->idNumber << endl;
+        cout << ptr->average << endl;
     }
     
     return 0;
