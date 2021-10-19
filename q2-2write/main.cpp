@@ -9,15 +9,6 @@ struct student{
     double average;
 };
 
-void outputBinary(student *x) {
-    ofstream output;
-    output.open("students.bin");
-	// when you open file here,
-	// always open the new file. truncated.
-	
-    output.write((char *)x, sizeof(*x));
-}
-
 int main(){
     int studentID, score1, score2, score3;
     char name[10];
