@@ -75,7 +75,28 @@ public:
 
 };
 
+int findMax(Numbers numberset [], int n) {
+    int largest = 0;
+
+    for (int i = 1; i < n; ++i) {
+        if (numberset[i].getMax() > numberset[largest].getMax()){
+            largest = i;
+        }
+    }
+
+    return largest;
+}
+
 int main() {
     srand(time(0));
+    Numbers numberset[] = {
+            Numbers(1, 3),
+            Numbers(2, 5),
+            Numbers(3, 10),
+            Numbers(4, 5),
+            Numbers(5, 3)};
+
+
+
     return 0;
 }
