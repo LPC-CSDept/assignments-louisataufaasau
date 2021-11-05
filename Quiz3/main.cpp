@@ -60,7 +60,7 @@ public:
     void deleteElm(int d){
         for (int i = 0; i < numbers.size(); ++i) {
             if (numbers.at(i) == d){
-//                numbers.erase(i) // figure this out later
+                numbers.erase(remove(numbers.begin(), numbers.end(), d), numbers.end());
             }
         }
     }
@@ -76,10 +76,10 @@ public:
 };
 
 int findMax(Numbers numberset [], int n) {
-    int largest = 0;
+    int largest = numberset[0].getMax() - numberset[0].getMin();
 
     for (int i = 1; i < n; ++i) {
-        if (numberset[i].getMax() > numberset[largest].getMax()){
+        if ((numberset[i].getMax() - numberset[i].getMin()) > largest){
             largest = i;
         }
     }
@@ -87,6 +87,15 @@ int findMax(Numbers numberset [], int n) {
     return largest;
 }
 
+void deDup(Numbers numberset1, Numbers numberset2) {
+    for (int i = 0; i < numberset1.getSize(); ++i) {
+        for (int j = 0; j < numberset2.getSize(); ++j) {
+            if (numberset1.getElm(i) == numberset2.getElm(j)) {
+                numberset1.deleteElm(i);
+            }
+        }
+    }
+}
 
 int main() {
     const int N = 5;
@@ -103,11 +112,21 @@ int main() {
         cout << "Number Set ID " << numberset[i].getId() << "\t";
         numberset[i].printAll();
     }
+    cout << endl;
 
     int id = findMax(numberset, N);
     cout << "The set ID that has max difference is " << id << "\t";
     cout << "The diff is " << numberset[id].getMax() - numberset[id].getMin() << endl;
+    cout << endl;
 
+    deDup(numberset[2], numberset[3]);
+    cout << "ID 3 - ID 4\n ";
+    numberset[2].printAll();
+    cout << endl;
+
+    deDup(numberset[0], numberset[1]);
+    cout << "ID 1 - ID 2\n";
+    numberset[0].printAll();
 
     return 0;
 }
