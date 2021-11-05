@@ -77,14 +77,16 @@ public:
 
 int findMax(Numbers numberset [], int n) {
     int largest = numberset[0].getMax() - numberset[0].getMin();
+    int largestIndex = 0;
 
     for (int i = 1; i < n; ++i) {
         if ((numberset[i].getMax() - numberset[i].getMin()) > largest){
-            largest = i;
+            largest = numberset[i].getMax() - numberset[i].getMin();
+            largestIndex = i;
         }
     }
 
-    return largest;
+    return largestIndex;
 }
 
 void deDup(Numbers numberset1, Numbers numberset2) {
@@ -111,11 +113,12 @@ int main() {
     for (int i = 0; i < N; ++i) {
         cout << "Number Set ID " << numberset[i].getId() << "\t";
         numberset[i].printAll();
+        cout << endl;
     }
     cout << endl;
 
     int id = findMax(numberset, N);
-    cout << "The set ID that has max difference is " << id << "\t";
+    cout << "The set ID that has max difference is " << id+1 << "\t";
     cout << "The diff is " << numberset[id].getMax() - numberset[id].getMin() << endl;
     cout << endl;
 
