@@ -69,7 +69,7 @@ public:
     }
     void printAll() const {
         for (int i = 0; i < numbers.size(); ++i) {
-            cout << numbers.at(i) << endl;
+            cout << numbers.at(i) << " ";
         }
     }
 
@@ -87,8 +87,11 @@ int findMax(Numbers numberset [], int n) {
     return largest;
 }
 
+
 int main() {
+    const int N = 5;
     srand(time(0));
+
     Numbers numberset[] = {
             Numbers(1, 3),
             Numbers(2, 5),
@@ -96,6 +99,14 @@ int main() {
             Numbers(4, 5),
             Numbers(5, 3)};
 
+    for (int i = 0; i < N; ++i) {
+        cout << "Number Set ID " << numberset[i].getId() << "\t";
+        numberset[i].printAll();
+    }
+
+    int id = findMax(numberset, N);
+    cout << "The set ID that has max difference is " << id << "\t";
+    cout << "The diff is " << numberset[id].getMax() - numberset[id].getMin() << endl;
 
 
     return 0;
