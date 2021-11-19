@@ -10,7 +10,11 @@ Numbers::Numbers(int s){
 }
 Numbers::Numbers(const Numbers &n1){
     size=n1.size;
-    numbers=n1.numbers;
+    numbers=new int[n1.size];
+    
+    for (int i=0; i<n1.size; i++) {
+        numbers[i] = n1.numbers[i];
+    }
 }
 Numbers::~Numbers(){
     delete [] numbers;
@@ -31,4 +35,3 @@ void Numbers::createNumbers(){
         numbers[i]=v1;
     }
 }
-

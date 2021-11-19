@@ -11,7 +11,7 @@ public:
     Numbers();
     Numbers(int s);
     Numbers(const Numbers &);
-//    ~Numbers();
+    ~Numbers();
     int getMax() const;
     void createNumbers();
     friend void printNumbers(Numbers);
