@@ -53,7 +53,10 @@ public:
     
     friend ostream& operator<<(ostream& os, const Course& c){
         os << c.cname << endl << c.credits << endl << c.semester << endl;
-        
+        for (int i=0; i<c.student.size(); i++) {
+            os << c.student[i] << " ";
+        }
+        os << endl;
         
             return os;
         }
