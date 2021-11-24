@@ -51,10 +51,11 @@ public:
     
     void addStudent(Student &s);
     
-    friend ostream& operator<<(ostream& os, const Course& c){
+    friend ostream& operator<<(ostream& os, Course& c){
         os << c.cname << endl << c.credits << endl << c.semester << endl;
+        os << c.student.size() << endl;
         for (int i=0; i<c.student.size(); i++) {
-            os << c.student[i] << " ";
+            os << c.student[i].getId() << " " << c.student[i].getSname() << " " << c.student[i].getGrade() << " " << c.student[i].getScores() << endl;
         }
         os << endl;
         
@@ -62,6 +63,18 @@ public:
         }
     friend istream &operator >> (istream& is, Course& c){
         is >> c.cname >> c.credits >> c.semester;
+        for (int i=0; i<c.student.size(); i++) {
+            int idd;
+            string s;
+            char g;
+            double ss;
+            
+            is >> idd >> s >> g >> ss;
+            c.student[i].setId(idd);
+            c.student[i].setSname(s);
+            c.student[i].setGrade(g);
+            c.student[i].setScores(ss);
+        }
         return is;
     }
     
