@@ -57,10 +57,10 @@ public:
         
             return os;
         }
-//    friend istream &operator >> (istream& is, const Course& c){
-//        is >> c.credits;
-//        return is;
-//    }
+    friend istream &operator >> (istream& is, Course& c){
+        is >> c.cname >> c.credits >> c.semester;
+        return is;
+    }
     
 };
 
