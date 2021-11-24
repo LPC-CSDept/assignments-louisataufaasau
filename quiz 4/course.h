@@ -51,8 +51,17 @@ public:
     
     void addStudent(Student &s);
     
-    friend istream& operator>>(istream& is, const Course& c);
-    friend ostream& operator<<(ostream& os, const Course& c);
+    friend ostream& operator<<(ostream& os, const Course& c){
+        os << c.cname << endl << c.credits << endl << c.semester << endl;
+        
+        
+            return os;
+        }
+//    friend istream &operator >> (istream& is, const Course& c){
+//        is >> c.credits;
+//        return is;
+//    }
+    
 };
 
 #endif /* course_h */
