@@ -13,8 +13,14 @@ private:
 public:
     Students();
     Students(int, string, int[]);
+    
     int getID();
-    int getScores();
+    string getName();
+    int* getScores();
+    
+    void setID(int);
+    void setName(string);
+    void setScores(int []);
 };
 
 #endif /* Students_h */
