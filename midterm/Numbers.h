@@ -7,6 +7,7 @@
 
 #ifndef Numbers_h
 #define Numbers_h
+
 using namespace std;
 #include <iostream>
 #include <string>
@@ -18,7 +19,6 @@ private:
     int ID;
     vector<T> values;
     
-    //dont make set func for this
     static int NumofObjects;
 public:
     static int getNumObjects();

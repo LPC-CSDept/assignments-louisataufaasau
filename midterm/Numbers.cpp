@@ -43,3 +43,4 @@ int Numbers<T>::getID(){
     return ID;
 }
 
+template class Numbers<int>;
