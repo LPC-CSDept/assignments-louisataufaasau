@@ -1,14 +1,17 @@
-//
-//  main.cpp
-//  Midterm
-//
-//  Created by Louisa Taufaasau on 11/30/21.
-//
-
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include "Numbers.h"
+using namespace std;
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+template <class T>
+void printNumbers(Numbers <T> n) {
+    for (int i=0; i<n.values.size(); i++){
+        cout << n.values[i] << endl;
+    }
+}
+int main() {
+    srand(time(0));
+    
     return 0;
 }

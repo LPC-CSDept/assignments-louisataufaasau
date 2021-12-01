@@ -24,3 +24,22 @@ int Numbers<T>::operator > (const Numbers & n){
     else
         return 0;
 }
+template<class T>
+Numbers<T>::Numbers(){
+    ID=0;
+    NumofObjects++;
+}
+template<class T>
+Numbers<T>::Numbers(int i, int n){
+    ID=i;
+    for (int i=0; i<n; i++){
+        T v1 = rand() % 100;
+        values.push_back(v1);
+    }
+    NumofObjects++;
+}
+template<class T>
+int Numbers<T>::getID(){
+    return ID;
+}
+

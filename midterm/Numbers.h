@@ -7,8 +7,10 @@
 
 #ifndef Numbers_h
 #define Numbers_h
-#include <vector>
 using namespace std;
+#include <iostream>
+#include <string>
+#include <vector>
 
 template <class T>
 class Numbers{
@@ -19,8 +21,14 @@ private:
     //dont make set func for this
     static int NumofObjects;
 public:
-    static int getNumObjects(void);
+    static int getNumObjects();
     int operator > (const Numbers &);
+    Numbers();
+    Numbers(int i, int n);
+    int getID();
+    int setID();
+    friend void printNumbers(Numbers);
+    
 };
 
 #endif /* Numbers_h */
