@@ -1,16 +1,7 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
 #include <fstream>
-#include "Numbers.h"
 #include "Students.h"
 using namespace std;
-
-void printNumbers(Numbers <int> n) {
-    for (int i=0; i<n.values.size(); i++){
-        cout << n.values[i] << endl;
-    }
-}
 
 void printStudents(Students s[], int n){
     int i, j;
@@ -18,7 +9,7 @@ void printStudents(Students s[], int n){
         for (j = 0; j < n-i-1; j++){
             int score1 = s[j].getScores()[0] + s[j].getScores()[1] + s[j].getScores()[2];
             int score2 = s[j+1].getScores()[0] + s[j+1].getScores()[1] + s[j+1].getScores()[2];
-            
+
             if (score1 < score2){
                 Students temp = s[j];
                 s[j] = s[j+1];
@@ -26,7 +17,7 @@ void printStudents(Students s[], int n){
             }
         }
     }
-    
+
     for (int i=0; i<n; i++) {
         cout << "ID: " << s[i].getID() << endl;
         cout << "Name: " << s[i].getName() << endl;
@@ -38,10 +29,10 @@ void printStudents(Students s[], int n){
 
 Students findStudent(Students s[], int n, int ID){
     int low = 0, high = n - 1;
- 
+
     while (low <= high){
         int mid = (low + high)/2;
- 
+
         if (ID == s[mid].getID()) {
             return s[mid];
         }
@@ -57,48 +48,28 @@ Students findStudent(Students s[], int n, int ID){
 }
 
 int main() {
-    srand(time(0));
     const int N = 10;
     Students students[N];
-    
-    Numbers<int> n1(1, 3);
-    Numbers<int> n2(2, 5);
-    
-    cout << "There are " << n1.getNumObjects() << endl;
 
-    if (n1>n2) {
-        cout << "n1 is greater than n2" << endl;
-    }
-    else {
-        cout << "n1 is not greater than n2" << endl;
-    }
-    cout << "n1's ID is: " << n1.getID() << endl;
-
-    cout << "n1's values are: " << endl;
-    printNumbers(n1);
-    cout << "n2's values are: " << endl;
-    printNumbers(n2);
-    cout << endl;
-    
     fstream file;
     file.open("students.txt");
-    
+
     for (int i=0; i<N; i++){
         int ID;
         string name;
         int scores[3];
-        
+
         file >> ID >> name >> scores[0] >> scores[1] >> scores[2];
         students[i].setID(ID);
         students[i].setName(name);
         students[i].setScores(scores);
     }
-    
+
     cout << "Printing students in descending order by score total:" << endl;
     printStudents(students, N);
-        
+
     cout << "Student with ID 10006677 is " << findStudent(students, N, 10006677).getName() << endl;
     file.close();
-    
+
     return 0;
 }
