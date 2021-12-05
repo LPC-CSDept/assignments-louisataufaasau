@@ -63,17 +63,19 @@ public:
         }
     friend istream &operator >> (istream& is, Course& c){
         is >> c.cname >> c.credits >> c.semester;
-        for (int i=0; i<c.student.size(); i++) {
+        
+        int size = 0;
+        is >> size;
+        
+        for (int i=0; i<size; i++) {
             int idd;
             string s;
             char g;
             double ss;
-            
+
             is >> idd >> s >> g >> ss;
-            c.student[i].setId(idd);
-            c.student[i].setSname(s);
-            c.student[i].setGrade(g);
-            c.student[i].setScores(ss);
+            Student student(idd, s, g, ss);
+            c.addStudent(student);
         }
         return is;
     }

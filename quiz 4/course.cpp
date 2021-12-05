@@ -91,7 +91,6 @@ void Course::setCourse(string c, int cred, string s, vector<Student> stud){
 void Course::addStudent(Student &s){
     student.push_back(s);
 }
-
 int Course::NUM_COURSES = 0;
 
 int Course::getNUM_COURSES(){
