@@ -1,5 +1,7 @@
 #ifndef course_h
 #define course_h
+#include <iostream>
+using namespace std;
 
 class Course{
 private:
@@ -8,7 +10,8 @@ private:
     int credit;
 public:
     Course();
-   // Constructor and Member functions that would be necessary to be used in this question
-}
+    void setCourse(int idnum, string coursename, int creditamount);
+    int getID();
+};
 
 #endif /* course_h */
