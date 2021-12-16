@@ -11,7 +11,10 @@ private:
 public:
     Course();
     void setCourse(int idnum, string coursename, int creditamount);
+    void printAll();
     int getID();
+    string getName();
+    int getCredit();
 };
 
 #endif /* course_h */
