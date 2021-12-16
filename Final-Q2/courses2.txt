@@ -1,0 +1,10 @@
+10001 English 5
+10003 Math 5
+10002 PE 5
+10005 CS02 7
+10006 History 2
+10008 Art 5
+10004 Chemistry 4
+10007 Biology 7
+10000 Stats 5
+10009 Photography 4
