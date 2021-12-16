@@ -32,6 +32,8 @@ public:
     void setPay(double py);
     void setWorker(string n, string h, int num, int shf, double py);
     void printWorker();
+    bool operator <(const ProductWorker& p);
+    friend int highestPay(ProductWorker workers[], int size);
 };
 
 #endif /* ProductWorker_h */

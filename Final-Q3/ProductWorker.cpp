@@ -73,4 +73,13 @@ void ProductWorker::setWorker(string n, string h, int num, int shf, double py){
     setHireDate(h);
     setNumber(num);
 }
+void ProductWorker::printWorker(){
+    cout << getName() << " " << getHireDate() << " " << getNumber() << " " << shift << " " << pay << endl;
+}
 
+bool ProductWorker::operator <(const ProductWorker& p) {
+   if(pay < p.pay) {
+      return true;
+   }
+   return false;
+}
