@@ -27,6 +27,7 @@ void quickSortRecursive(Course s[], int first, int last){
         return;
     }
     pivot_idx = partition(s, first, last);
+    cout << "First: " << first << " " << "Last: " <<  last << " " << "Pivot index: " << pivot_idx << endl;
     
     quickSortRecursive(s, first, pivot_idx-1);
     quickSortRecursive(s, pivot_idx+1, last);
