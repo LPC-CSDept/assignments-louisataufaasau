@@ -32,6 +32,27 @@ void quickSortRecursive(Course s[], int first, int last){
     quickSortRecursive(s, first, pivot_idx-1);
     quickSortRecursive(s, pivot_idx+1, last);
 }
+void quickSortIterative(Course s[], int first, int last) {
+    int stack[last - first + 1];
+    int top = -1;
+    stack[++top] = first;
+    stack[++top] = last;
+    
+    while (top >= 0) {
+        last = stack[top--];
+        first = stack[top--];
+        int pivot_idx = partition(s, first, last);
+        
+        if (pivot_idx - 1 > first) {
+            stack[++top] = first;
+            stack[++top] = pivot_idx - 1;
+        }
+        if (pivot_idx + 1 < last) {
+            stack[++top] = pivot_idx + 1;
+            stack[++top] = last;
+        }
+    }
+}
 
 
 int main() {
@@ -60,7 +81,18 @@ int main() {
     printCourses(courses, 10);
     cout << endl;
     
-    quickSortRecursive(courses, 0, 9);
+    cout << "Press 1 to quick sort recursively or press 2 to quick sort iteratively" << endl;
+    cin >> choice;
+    cout << endl;
+    
+    if (choice == 1) {
+        quickSortRecursive(courses, 0, 9);
+        cout << endl;
+    }
+    else{
+        quickSortIterative(courses, 0, 9);
+        cout << endl;
+    }
     
     cout << "Courses after sorting:" << endl;
     printCourses(courses, 10);
