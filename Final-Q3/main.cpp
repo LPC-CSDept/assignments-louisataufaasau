@@ -36,6 +36,12 @@ int main() {
         workers[i].setWorker(n, d, id, s, p);
         workers[i].printWorker();
     }
+    cout << endl;
+    
+    int highest = highestPay(workers, 10);
+    cout << "The employee with the highest pay is located at index " << highest << endl;
+    cout << "Their information:" << endl;
+    workers[highest].printWorker();
     
     return 0;
 }
