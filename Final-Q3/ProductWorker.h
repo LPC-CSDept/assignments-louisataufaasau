@@ -26,6 +26,12 @@ private:
 public:
     ProductWorker();
     ProductWorker(string n, string h, int num, int shf, double py);
+    int getShift();
+    double getPay();
+    void setShift(int shf);
+    void setPay(double py);
+    void setWorker(string n, string h, int num, int shf, double py);
+    void printWorker();
 };
 
 #endif /* ProductWorker_h */

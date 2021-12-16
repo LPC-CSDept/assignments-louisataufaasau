@@ -1,8 +1,14 @@
 #include "ProductWorker.h"
+
 Employee::Employee(){
     name="";
     hiredate="";
     number=0;
+}
+Employee::Employee(string nm, string hrd, int snum){
+    name=nm;
+    hiredate=hrd;
+    number=snum;
 }
 string Employee::getName(){
     return name;
@@ -23,13 +29,48 @@ void Employee::setNumber(int snum){
     number=snum;
 }
 ProductWorker::ProductWorker(): Employee(){
-    shift=0;
+    shift=1;
     pay=0;
 }
-ProductWorker::ProductWorker(string n, string h, int num, int shf, double py){
-    name=n;
-    hiredate=h;
-    number=num;
+ProductWorker::ProductWorker(string n, string h, int num, int shf, double py): Employee(n, h, num){
     shift=shf;
+    if (shf>2) {
+        shift = 2;
+    }
+    if (shf<1) {
+        shift = 1;
+    }
     pay=py;
 }
+int ProductWorker::getShift(){
+    return shift;
+}
+double ProductWorker::getPay(){
+    return pay;
+}
+void ProductWorker::setShift(int shf){
+    shift = shf;
+    if (shf>2) {
+        shift = 2;
+    }
+    if (shf<1) {
+        shift = 1;
+    }
+}
+void ProductWorker::setPay(double py){
+    pay=py;
+}
+void ProductWorker::setWorker(string n, string h, int num, int shf, double py){
+    shift = shf;
+    if (shf>2) {
+        shift = 2;
+    }
+    if (shf<1) {
+        shift = 1;
+    }
+    pay=py;
+    setName(n);
+    setHireDate(h);
+    setNumber(num);
+}
+
