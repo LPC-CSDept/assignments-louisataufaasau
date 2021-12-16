@@ -9,6 +9,29 @@ void printCourses(Course array[], int N){
     }
 }
 
+int partition (Course s[], int first, int last){
+    int pivot = s[last].getID();
+    int i = -1;
+    for (int j=0; j<last; j++) {
+        if (s[j].getID() < pivot) {
+            swap(s[++i], s[j]);
+        }
+    }
+    swap(s[i+1], s[last]);
+    return i+1;
+}
+
+void quickSortRecursive(Course s[], int first, int last){
+    int pivot_idx;
+    if (first >= last) {
+        return;
+    }
+    pivot_idx = partition(s, first, last);
+    
+    quickSortRecursive(s, first, pivot_idx-1);
+    quickSortRecursive(s, pivot_idx+1, last);
+}
+
 
 int main() {
     int choice;
@@ -35,6 +58,12 @@ int main() {
     cout << "The courses are:" << endl;
     printCourses(courses, 10);
     cout << endl;
+    
+    quickSortRecursive(courses, 0, 9);
+    
+    cout << "Courses after sorting:" << endl;
+    printCourses(courses, 10);
+    
     
     file.close();
     return 0;
