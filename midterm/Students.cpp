@@ -41,3 +41,10 @@ void Students::setScores(int sc []) {
         scores[i]=sc[i];
     }
 }
+
+void Students::printStudent(){
+    cout << "ID: " << ID << endl;
+    cout << "Name: " << name << endl;
+    cout << "Scores: " << scores[0] << " " << scores[1] << " " << scores[2] << endl;
+    cout << endl;
+}

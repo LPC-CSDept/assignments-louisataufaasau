@@ -13,6 +13,7 @@ void printNumbers(Numbers <int> n) {
 int main() {
     srand(time(0));
 
+    cout << "Test 1:" << endl;
     Numbers<int> n1(1, 3);
     Numbers<int> n2(2, 5);
 
@@ -30,6 +31,26 @@ int main() {
     printNumbers(n1);
     cout << "n2's values are: " << endl;
     printNumbers(n2);
+    cout << endl << endl;;
+
+    cout << "Test 2:" << endl;
+    Numbers<int> n3(3, 5);
+    Numbers<int> n4(4, 7);
+
+    cout << "There are " << n3.getNumObjects() << endl;
+
+    if (n3>n4) {
+        cout << "n3 is greater than n4" << endl;
+    }
+    else {
+        cout << "n3 is not greater than n4" << endl;
+    }
+    cout << "n3's ID is: " << n3.getID() << endl;
+
+    cout << "n3's values are: " << endl;
+    printNumbers(n3);
+    cout << "n4's values are: " << endl;
+    printNumbers(n4);
     cout << endl;
 
     return 0;

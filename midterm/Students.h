@@ -21,6 +21,8 @@ public:
     void setID(int);
     void setName(string);
     void setScores(int []);
+    
+    void printStudent();
 };
 
 #endif /* Students_h */

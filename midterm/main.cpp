@@ -3,7 +3,7 @@
 #include "Students.h"
 using namespace std;
 
-void printStudents(Students s[], int n){
+void printStudentsDesc(Students s[], int n){
     int i, j;
     for (i = 0; i < n-1; i++){
         for (j = 0; j < n-i-1; j++){
@@ -19,22 +19,39 @@ void printStudents(Students s[], int n){
     }
 
     for (int i=0; i<n; i++) {
-        cout << "ID: " << s[i].getID() << endl;
-        cout << "Name: " << s[i].getName() << endl;
-        cout << "Scores: " << s[i].getScores()[0] << " " << s[i].getScores()[1] << " " << s[i].getScores()[2] << endl;
+        s[i].printStudent();
         cout << "Score sum: " << s[i].getScores()[0] + s[i].getScores()[1] + s[i].getScores()[2] << endl;
         cout << endl;
     }
 }
 
-Students findStudent(Students s[], int n, int ID){
+void printStudents(Students s[], int n){
+    for (int i=0; i<n; i++) {
+        s[i].printStudent();
+        cout << endl;
+    }
+}
+
+void bubbleSortbyID(Students s[], int N)
+{
+    for(int i=0; i<N-1; i++)
+    {
+        for(int j=0; j<N-i-1; j++)
+        {
+            if ( s[j].getID() > s[j+1].getID())
+                swap(s[j], s[j+1]);
+        }
+    }
+}
+
+int findStudent(Students s[], int n, int ID){
     int low = 0, high = n - 1;
 
     while (low <= high){
         int mid = (low + high)/2;
 
         if (ID == s[mid].getID()) {
-            return s[mid];
+            return mid;
         }
         else if (ID < s[mid].getID()) {
             high = mid - 1;
@@ -43,8 +60,7 @@ Students findStudent(Students s[], int n, int ID){
             low = mid + 1;
         }
     }
-    cout << "Student not found." << endl;
-    return s[0];
+    return -1;
 }
 
 int main() {
@@ -52,7 +68,15 @@ int main() {
     Students students[N];
 
     fstream file;
-    file.open("students.txt");
+    int fileNumber;
+    cout << "Enter 1 for file 1 or enter 2 for file 2" << endl;
+    cin >> fileNumber;
+    if (fileNumber == 1) {
+        file.open("students.txt");
+    }
+    else{
+        file.open("students2.txt");
+    }
 
     for (int i=0; i<N; i++){
         int ID;
@@ -66,9 +90,24 @@ int main() {
     }
 
     cout << "Printing students in descending order by score total:" << endl;
+    printStudentsDesc(students, N);
+    cout << "Printing students by ID:" << endl;
+    bubbleSortbyID(students, N);
     printStudents(students, N);
-
-    cout << "Student with ID 10006677 is " << findStudent(students, N, 10006677).getName() << endl;
+    
+    int ID;
+    cout << "Enter the ID of the student you want to find: ";
+    cin >> ID;
+    int position = findStudent(students, N, ID);
+    if (position==-1) {
+        cout << "Student not found." << endl;
+    }
+    else{
+        cout << "Student with ID " << ID << " is located at postion " << position << endl;
+        cout << "The student:" << endl;
+        students[position].printStudent();
+    }
+    
     file.close();
 
     return 0;
